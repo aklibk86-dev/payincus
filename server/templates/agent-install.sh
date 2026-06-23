@@ -194,19 +194,11 @@ manifest_value() {
   local manifest_path="$1"
   local platform="$2"
   local key="$3"
+  local compact
 
-  awk -v platform="\"${platform}\"" -v key="\"${key}\"" '
-    $0 ~ platform { in_platform=1; next }
-    in_platform && $0 ~ /^[[:space:]]*}/ { exit }
-    in_platform && $0 ~ key {
-      line=$0
-      sub(/^[^:]*:[[:space:]]*/, "", line)
-      sub(/[,\r]*$/, "", line)
-      gsub(/^"|"$/, "", line)
-      print line
-      exit
-    }
-  ' "${manifest_path}"
+  compact="$(tr -d '\n\r' < "${manifest_path}")"
+  printf '%s\n' "${compact}" | sed -nE \
+    "s/.*\"${platform}\"[[:space:]]*:[[:space:]]*\\{[^}]*\"${key}\"[[:space:]]*:[[:space:]]*\"?([^\",}]+)\"?.*/\\1/p" | head -n1
 }
 
 validate_binary_name() {

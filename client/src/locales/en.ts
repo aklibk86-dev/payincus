@@ -3811,7 +3811,7 @@ export default {
                 usedBy: 'Used by',
                 volumes: 'volumes',
                 // Driver descriptions
-                zfsDesc: 'Recommended: Full features (snapshots, clones, compression, quotas), excellent performance',
+                zfsDesc: 'Recommended when the host has a loaded ZFS kernel module; use LVM, Btrfs, or DIR if Debian/cloud kernels cannot load ZFS',
                 lvmDesc: 'Linux standard, very stable, thin provisioning recommended',
                 btrfsDesc: 'Similar to ZFS features, suitable for single disk or RAID1/10',
                 dirDesc: 'Directory storage, lowest performance, for testing only',

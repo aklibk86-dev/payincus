@@ -57,6 +57,10 @@ assert.ok(
   'Agent install script must verify custom and manifest binary checksums before install'
 )
 assert.ok(
+  /manifest_value\(\)[\s\S]*compact="\$\(tr -d '\\n\\r' < "\$\{manifest_path\}"\)"[\s\S]*sed -nE[\s\S]*\$\{platform\}[\s\S]*\$\{key\}/.test(installScriptSource),
+  'Agent install script must parse compact single-line Agent manifests served by the panel'
+)
+assert.ok(
   installScriptSource.includes('download_binary_once "${fallback_url}" "${target}" "${expected_sha256}"'),
   'Agent install script fallback binary downloads must keep the same sha256 verification requirement'
 )

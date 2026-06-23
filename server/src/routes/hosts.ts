@@ -96,6 +96,26 @@ const HOST_BATCH_INSTANCE_MAX_ITEMS = 100
 const HOST_GIFT_DAYS_MAX = 365
 const HOST_RENEWAL_PRICE_MAX = 99999
 
+function formatStoragePoolCreateError(error: unknown): string {
+  const message = error instanceof Error ? error.message : String(error)
+  const lowerMessage = message.toLowerCase()
+
+  if (
+    lowerMessage.includes('modprobe') &&
+    lowerMessage.includes('zfs') &&
+    (lowerMessage.includes('module zfs not found') || lowerMessage.includes('error loading "zfs" module'))
+  ) {
+    return [
+      '宿主机未加载 ZFS 内核模块，当前系统无法创建 ZFS 存储池。',
+      'Debian cloud 内核通常需要先安装匹配的 linux-headers 并让 zfs-dkms 编译成功；',
+      '也可以改用 LVM、Btrfs 或 DIR 存储池。原始错误:',
+      message
+    ].join(' ')
+  }
+
+  return message
+}
+
 function parsePositiveRouteId(value: string): number | null {
   if (!POSITIVE_ROUTE_ID_PATTERN.test(value)) return null
   const parsed = Number(value)
@@ -3638,7 +3658,7 @@ export default async function hostRoutes(fastify: FastifyInstance) {
 
       return reply.code(201).send({ message: '存储池创建成功', name })
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : String(err)
+      const errorMessage = formatStoragePoolCreateError(err)
       request.log.error(err, 'Failed to create storage pool')
       return reply.code(500).send({ error: `创建存储池失败: ${errorMessage}` })
     }

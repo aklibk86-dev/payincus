@@ -25,6 +25,8 @@ INCUDAL_AGENT_RELEASE_TOKEN=
 INCUDAL_AGENT_RELEASE_DIR=/opt/incudal/agent-release
 ```
 
+Agent 安装脚本会读取 `https://<panel>/api/agent/manifest.json`，并按当前系统架构选择 `linux-amd64` 或 `linux-arm64` 二进制。如果安装时报 `agent manifest does not contain linux-amd64 binary metadata`，通常表示安装脚本版本过旧，无法解析面板返回的单行 JSON manifest。请先更新面板到包含 Agent manifest 解析修复的版本，再重新复制后台生成的 Agent 安装命令。
+
 ## 本地构建
 
 ```bash

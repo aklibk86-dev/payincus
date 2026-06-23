@@ -103,6 +103,15 @@ assert.ok(
   'host renewal price must reject non-finite and out-of-range body values at route boundary'
 )
 
+assert.ok(
+  source.includes('function formatStoragePoolCreateError(error: unknown): string') &&
+    source.includes("lowerMessage.includes('modprobe')") &&
+    source.includes("lowerMessage.includes('zfs')") &&
+    source.includes('宿主机未加载 ZFS 内核模块') &&
+    source.includes('formatStoragePoolCreateError(err)'),
+  'host storage pool creation must return actionable guidance when ZFS kernel modules are missing'
+)
+
 for (const forbiddenPattern of [
   'const hostId = Number(id)',
   'const sourceHostId = Number(id)',
