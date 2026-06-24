@@ -6,16 +6,32 @@ This page is generated from Git tags and commits to show system version history.
 
 ## Current Source State / 当前源码状态
 
-- Current HEAD / 当前 HEAD: `8f2d2f3`
+- Current HEAD / 当前 HEAD: `01731f6`
 - Commit date / 提交日期: 2026-06-24
-- Commit subject / 提交说明: Ensure installer enables pnpm / 确保安装脚本启用 pnpm
-- Latest tag / 最新 tag: `v0.1.9`
+- Commit subject / 提交说明: Fix installer static asset permissions / 修复安装器静态资源权限
+- Latest tag / 最新 tag: `v0.2.0`
 
 ## Unreleased Changes / 未发布变更
 
 - This tag points to the same commit as the adjacent tag, so there are no additional Git commits.
 
 ## Historical Versions / 历史版本
+
+## v0.2.0
+
+- Release commit / 发布提交: `01731f6`
+- Commit date / 提交日期: 2026-06-24
+- Commit subject / 提交说明: Fix installer static asset permissions / 修复安装器静态资源权限
+
+### 修复与稳定性 / Fixes and stability
+
+- Keep the install root traversable for Nginx so one-click installs can serve frontend static assets.
+- 保持安装根目录可被 Nginx 穿透，确保一键安装后可正常提供前端静态资源。
+
+### 改进与调整 / Improvements and adjustments
+
+- Preserve owner-only permissions for .env after install and upgrade permission repair.
+- Add split deployment guard coverage for installer static asset permissions.
 
 ## v0.1.9
 

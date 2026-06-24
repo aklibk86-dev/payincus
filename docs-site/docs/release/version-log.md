@@ -6,16 +6,32 @@
 
 ## 当前源码状态 / Current Source State
 
-- 当前 HEAD / Current HEAD: `8f2d2f3`
+- 当前 HEAD / Current HEAD: `01731f6`
 - 提交日期 / Commit date: 2026-06-24
-- 提交说明 / Commit subject: Ensure installer enables pnpm / 确保安装脚本启用 pnpm
-- 最新 tag / Latest tag: `v0.1.9`
+- 提交说明 / Commit subject: Fix installer static asset permissions / 修复安装器静态资源权限
+- 最新 tag / Latest tag: `v0.2.0`
 
 ## 未发布变更 / Unreleased Changes
 
 - 该 tag 与相邻 tag 指向同一提交，未产生额外 Git commit。
 
 ## 历史版本 / Historical Versions
+
+## v0.2.0
+
+- 发布提交 / Release commit: `01731f6`
+- 提交日期 / Commit date: 2026-06-24
+- 提交说明 / Commit subject: Fix installer static asset permissions / 修复安装器静态资源权限
+
+### 修复与稳定性 / Fixes and stability
+
+- Keep the install root traversable for Nginx so one-click installs can serve frontend static assets.
+- 保持安装根目录可被 Nginx 穿透，确保一键安装后可正常提供前端静态资源。
+
+### 改进与调整 / Improvements and adjustments
+
+- Preserve owner-only permissions for .env after install and upgrade permission repair.
+- Add split deployment guard coverage for installer static asset permissions.
 
 ## v0.1.9
 
