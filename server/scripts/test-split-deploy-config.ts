@@ -221,7 +221,11 @@ assert.ok(
   splitAuthSmoke.includes("import '../config/env.js'") &&
     splitAuthSmoke.includes("from '../db/users.js'") &&
     splitAuthSmoke.includes("from '../db/prisma.js'") &&
-    splitAuthSmoke.includes("from '../lib/security.js'"),
+    splitAuthSmoke.includes("from '../lib/security.js'") &&
+    splitAuthSmoke.includes('SMOKE_TURNSTILE_TOKEN') &&
+    splitAuthSmoke.includes('TURNSTILE_TOKEN_MISSING') &&
+    splitAuthSmoke.includes('turnstileProtectedLogin') &&
+    splitAuthSmoke.includes('loginChainSkipped'),
   'split auth smoke must live under server/src/scripts so production artifacts compile it into dist/scripts without tsx'
 )
 assert.ok(splitAuthSmoke.includes('frontend proxied /api/health'), 'split auth smoke must verify frontend /api proxy')

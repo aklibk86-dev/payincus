@@ -26,6 +26,7 @@ const frontendUrl = trimSlash(process.env.SMOKE_FRONTEND_URL || process.env.FRON
 const apiBaseUrl = trimSlash(process.env.SMOKE_API_BASE_URL || frontendUrl)
 const adminUsername = process.env.SMOKE_ADMIN_USERNAME || 'admin'
 const adminPassword = process.env.SMOKE_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD || (process.env.NODE_ENV === 'production' ? '' : 'admin123')
+const smokeTurnstileToken = process.env.SMOKE_TURNSTILE_TOKEN || ''
 const smokeUserAgent = 'incudal-split-smoke/1.0'
 const temporaryUserPassword = 'SmokeUser123'
 
@@ -85,6 +86,13 @@ function requireField<T>(data: JsonObject, field: string, predicate: (value: unk
   return value
 }
 
+function withTurnstileToken<T extends JsonObject>(body: T): T & { turnstileToken?: string } {
+  if (!smokeTurnstileToken) {
+    return body
+  }
+  return { ...body, turnstileToken: smokeTurnstileToken }
+}
+
 function isString(value: unknown): value is string {
   return typeof value === 'string' && value.length > 0
 }
@@ -140,6 +148,34 @@ async function main(): Promise<void> {
     })
     requireStatus('invalid token /api/auth/me', invalidMe, 401)
 
+    if (!smokeTurnstileToken) {
+      const turnstileProbe = await fetchJson(`${apiBaseUrl}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: `smoke-turnstile-probe-${Date.now()}`,
+          password: temporaryUserPassword
+        })
+      })
+      if (
+        turnstileProbe.response.status === 400 &&
+        (turnstileProbe.data as JsonObject).code === 'TURNSTILE_TOKEN_MISSING'
+      ) {
+        console.log('[smoke-split-auth] passed', {
+          backendUrl,
+          frontendUrl,
+          apiBaseUrl,
+          anonymousAdminBoundary: '401',
+          invalidTokenBoundary: '401',
+          turnstileProtectedLogin: 'TURNSTILE_TOKEN_MISSING',
+          loginChainSkipped: 'SMOKE_TURNSTILE_TOKEN not provided'
+        })
+        return
+      }
+    }
+
     const temporaryUsername = `smoke-user-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
     const passwordHash = await bcrypt.hash(temporaryUserPassword, 12)
     const temporaryUserId = await createUser(
@@ -181,10 +217,10 @@ async function main(): Promise<void> {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(withTurnstileToken({
         username: bannedUsername,
         password: temporaryUserPassword
-      })
+      }))
     })
     requireStatus('banned user login', bannedLogin, 403)
     if (typeof (bannedLogin.data as JsonObject).token === 'string') {
@@ -220,10 +256,10 @@ async function main(): Promise<void> {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(withTurnstileToken({
         username: twoFactorUsername,
         password: temporaryUserPassword
-      })
+      }))
     })
     requireStatus('2FA user login without code', missingTwoFactorLogin, 401)
     if (typeof (missingTwoFactorLogin.data as JsonObject).token === 'string') {
@@ -235,11 +271,11 @@ async function main(): Promise<void> {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(withTurnstileToken({
         username: twoFactorUsername,
         password: temporaryUserPassword,
         totpCode: '000000'
-      })
+      }))
     })
     requireStatus('2FA user login with invalid code', invalidTwoFactorLogin, 401)
     if (typeof (invalidTwoFactorLogin.data as JsonObject).token === 'string') {
@@ -254,11 +290,11 @@ async function main(): Promise<void> {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body: JSON.stringify(withTurnstileToken({
           username: twoFactorUsername,
           password: temporaryUserPassword,
           totpCode: validTotpCode
-        })
+        }))
       })
       if (validTwoFactorLogin.response.status !== 401 || attempt === 2) {
         break
@@ -286,10 +322,10 @@ async function main(): Promise<void> {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(withTurnstileToken({
         username: temporaryUsername,
         password: temporaryUserPassword
-      })
+      }))
     })
     requireOk('ordinary user login', ordinaryLogin)
     const ordinaryToken = requireField(ordinaryLogin.data as JsonObject, 'token', isString, 'ordinary user login did not return access token')
@@ -321,10 +357,10 @@ async function main(): Promise<void> {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(withTurnstileToken({
         username: adminUsername,
         password: adminPassword
-      })
+      }))
     })
     requireOk('admin login', login)
     const token = requireField(login.data as JsonObject, 'token', isString, 'admin login did not return access token')
