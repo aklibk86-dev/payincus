@@ -68,7 +68,8 @@ The operations overview is returned only by the admin statistics API and is not 
 - Summarizes Host CPU, memory, disk, NAT ports, instance count and traffic usage as sellable inventory.
 - Lets administrators maintain monthly host cost, monthly IPv4 cost, traffic cost per TB and notes per Host.
 - Estimates plan monthly margin from plan price and Host cost assumptions to highlight low-margin or negative-margin plans.
-- Capacity alerts are operational warnings only. They do not auto-disable sales, modify plans, affect instance creation or change billing.
+- Capacity alerts are operational warnings only. They do not automatically rewrite plan configuration, billing rules or existing instances.
+- The user package market and instance creation flow run a separate real-time availability check: after subtracting non-deleted instance usage from online bound Hosts, if no Host can satisfy the smallest purchasable plan's CPU, memory or disk requirement, the package is shown as sold out and new orders are blocked.
 - Host pressure alerts are synced into SLA alert events and deduplicated with stable fingerprints.
 - Daily Host capacity snapshots are stored for 7/30-day trends and later operations review.
 - User package, instance and purchase APIs do not return Host cost, margin or internal capacity fields.
