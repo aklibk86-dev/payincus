@@ -1810,9 +1810,9 @@ export default async function adminExchangeRoutes(fastify: FastifyInstance) {
             remark
           }
         })
+        await auditInTransaction(tx, user.id, 'wallet.freeze', 'exchange_wallet', current.id, { targetUserId, amount, remark })
         return updated
       })
-      await audit(user.id, 'wallet.freeze', 'exchange_wallet', wallet.id, { targetUserId, amount, remark })
       return { wallet: serializeExchangeWallet(wallet) }
     } catch (error: any) {
       return reply.code(400).send({ error: error?.message || '冻结交易所余额失败' })
@@ -1863,9 +1863,9 @@ export default async function adminExchangeRoutes(fastify: FastifyInstance) {
             remark
           }
         })
+        await auditInTransaction(tx, user.id, 'wallet.unfreeze', 'exchange_wallet', current.id, { targetUserId, amount, remark })
         return updated
       })
-      await audit(user.id, 'wallet.unfreeze', 'exchange_wallet', wallet.id, { targetUserId, amount, remark })
       return { wallet: serializeExchangeWallet(wallet) }
     } catch (error: any) {
       return reply.code(400).send({ error: error?.message || '解冻交易所余额失败' })
@@ -1913,9 +1913,9 @@ export default async function adminExchangeRoutes(fastify: FastifyInstance) {
             remark
           }
         })
+        await auditInTransaction(tx, user.id, 'wallet.adjust', 'exchange_wallet', current.id, { targetUserId, amount, remark })
         return updated
       })
-      await audit(user.id, 'wallet.adjust', 'exchange_wallet', wallet.id, { targetUserId, amount, remark })
       return { wallet: serializeExchangeWallet(wallet) }
     } catch (error: any) {
       return reply.code(400).send({ error: error?.message || '调整交易所余额失败' })

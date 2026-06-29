@@ -1015,6 +1015,21 @@ const refundOrderSection = sourceBetween(adminExchangeRouteSource, 'async functi
 const refundReturnSection = sourceBetween(adminExchangeRouteSource, 'async function returnDeliveredExchangeInstanceForRefund', 'async function refundExchangeOrder')
 const manualCompleteSection = sourceBetween(adminExchangeRouteSource, 'async function completeDeliveryTaskManually', 'async function claimExchangeDisputeForProcessing')
 const adminDisputeRefundRoute = routeBlock(adminExchangeRouteSource, "'/disputes/:id/refund'")
+const adminWalletFreezeRoute = routeBlock(adminExchangeRouteSource, "'/wallets/:userId/freeze'")
+const adminWalletUnfreezeRoute = routeBlock(adminExchangeRouteSource, "'/wallets/:userId/unfreeze'")
+const adminWalletAdjustRoute = routeBlock(adminExchangeRouteSource, "'/wallets/:userId/adjust'")
+for (const [routeName, routeSource, action] of [
+  ['freeze wallet', adminWalletFreezeRoute, 'wallet.freeze'],
+  ['unfreeze wallet', adminWalletUnfreezeRoute, 'wallet.unfreeze'],
+  ['adjust wallet', adminWalletAdjustRoute, 'wallet.adjust']
+] as const) {
+  assert(
+    routeSource.includes('const wallet = await prisma.$transaction(async tx => {') &&
+      routeSource.includes(`await auditInTransaction(tx, user.id, '${action}', 'exchange_wallet', current.id`) &&
+      !routeSource.includes(`await audit(user.id, '${action}', 'exchange_wallet'`),
+    `admin ${routeName} must write wallet mutation, wallet log, and exchange audit log in the same transaction`
+  )
+}
 assertSourceOrder(
   refundReturnSection,
   [
