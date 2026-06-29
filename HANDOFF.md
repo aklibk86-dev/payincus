@@ -19,7 +19,7 @@ This file is a handoff note for a new Codex conversation. Do not include server 
 Use `git log --oneline --decorate -5` as the authoritative current HEAD because this handoff may receive handoff-only commits after product releases. The latest product/docs release baseline at the time of this refresh was:
 
 ```text
-cbc63b30 Update version log for v1.0.7
+6fb05d81 Update version log for v1.0.8
 ```
 
 GitHub remote `payincus/main` should be aligned with the current local HEAD after each handoff-only refresh. Use `git status --short --branch` and `git ls-remote payincus refs/heads/main` as the source of truth instead of copying this note forward.
@@ -29,16 +29,16 @@ The current local tree should be clean after pulling `payincus/main`. Do not res
 Latest product/docs release boundary at the time of this refresh:
 
 ```text
-cbc63b30 Update version log for v1.0.7
+6fb05d81 Update version log for v1.0.8
 ```
 
 ## Latest GitHub Release Work
 
-`v1.0.7` is published on GitHub and has release artifacts. Latest production OTA proof remains `v1.0.4` until a current authenticated production update task is run and recorded.
+`v1.0.8` is published on GitHub and has release artifacts. Production OTA task `#112` updated production from `v1.0.7` to `v1.0.8` and ended with status `success`.
 
 ## Active Exchange Marketplace Work
 
-The current worktree contains an in-progress full Exchange Marketplace implementation. It is intentionally not marked production-complete yet.
+The current worktree contains the `v1.0.8` Exchange Marketplace implementation. The code, release, OTA, and non-destructive production checks are complete; the remaining proof gap is a real buyer/seller Exchange delivery run with live accounts and a sacrificial instance.
 
 Implemented local scope:
 
@@ -161,6 +161,16 @@ curl https://pay.payincus.com/ returned HTTP 200 during v1.0.8 public reachabili
 curl https://admin.payincus.com/ returned HTTP 200 during v1.0.8 public reachability check
 curl https://pay.payincus.com/api/health returned HTTP 200 during v1.0.8 public backend health check
 NODE_ENV=production PORT=3001 SERVE_STATIC_CLIENT=false VITE_API_BASE_URL=/api TRUST_PROXY=true FRONTEND_URL=https://pay.payincus.com ADMIN_FRONTEND_URL=https://admin.payincus.com SITE_URL=https://pay.payincus.com BACKEND_URL=https://pay.payincus.com PAYMENT_CALLBACK_BASE_URL=https://pay.payincus.com PAYMENT_CALLBACK_IP_WHITELIST_REQUIRED=false PAYMENT_CALLBACK_SKIP_IP_WHITELIST=false INCUDAL_AGENT_RELEASE_REPOSITORY=VipMaxxxx/payincus RUN_PRODUCTION_PREFLIGHT=1 RUN_AGENT_RELEASE_SMOKE=1 RUN_SPLIT_AUTH_SMOKE=0 RUN_LOG_HEADER_CHECK=0 PRINT_MANUAL_CHECKLIST=0 RUN_LIVE_CHECKS=0 RUN_DB_CHECKS=0 pnpm verify:live-acceptance passed for v1.0.8 non-destructive checks
+GitHub Build & Release run 28353189725 completed success for v1.0.8 release commit 5f45543e0dbe13d01d34496a493d27ab9502ee8d
+GitHub CI run 28353187342 completed success for version-log commit 6fb05d81e7bb5a78c5c79beaa654be5619d86846
+GitHub Pages run 28353187346 completed success for version-log commit 6fb05d81e7bb5a78c5c79beaa654be5619d86846
+Production OTA task #112 status success, fromVersion v1.0.7, targetVersion v1.0.8, finishedAt 2026-06-29T06:39:38.211Z
+Production current symlink resolves to /opt/incudal/releases/v1.0.8-20260629063751
+Production root/server package versions both report 1.0.8
+Production systemctl is-active incudal-backend returned active
+Production local http://127.0.0.1:3001/api/health returned status ok
+Production public https://pay.payincus.com/api/health returned HTTP 200 status ok after OTA
+Production public https://admin.payincus.com/api/health returned HTTP 200 status ok after OTA
 ```
 
 Latest create-instance Turnstile fix:
@@ -195,12 +205,11 @@ Latest Exchange Marketplace hardening:
 
 Remaining proof before claiming 100%:
 
-- No `.env`, `.env.production`, `server/.env`, or `server/.env.production` existed in this checkout during the latest v1.0.8 audit; production checks were run with explicit environment variables.
-- `pnpm --filter server verify:production-db` still requires a real `DATABASE_URL`; the placeholder Prisma schema validation passed, but this is not a production DB migration proof.
-- Latest `pnpm verify:production` and non-destructive `pnpm verify:live-acceptance` passed for static/readiness checks with live DB checks disabled; split auth, recharge callback, agent heartbeat, and log/header live checks were intentionally skipped because they require current production credentials or temporary live data.
-- Latest public reachability check only covered unauthenticated user/admin shell pages and `/api/health`; it is not a login, order, delivery, Exchange, or OTA proof.
+- No `.env`, `.env.production`, `server/.env`, or `server/.env.production` existed in this checkout during the latest v1.0.8 local audit; local production checks were run with explicit environment variables.
+- Production OTA task `#112` ran migration, split-host, production-readiness, DB-readiness, Agent manifest, and log/header secret checks successfully on the production release artifact.
+- Latest production OTA proof covers artifact install, migrations, service restart, split-host, production readiness, log-header checks, and public health. It is not a login, order, delivery, or full Exchange buyer/seller proof.
 - Full live Exchange E2E is still missing: stopped instance listing, buyer balance purchase, escrow hold, delivery worker forced rebuild, anonymous handoff, confirmation/settlement, withdrawal review, and dispute/refund/manual retry path proof.
-- Do not mark the Exchange Marketplace complete until current production credentials/env or authenticated admin update access is available and the live proof is recorded. Do not reuse old server credentials from earlier conversations without the operator explicitly providing current access again.
+- Do not mark the Exchange Marketplace real-delivery proof complete until the live buyer/seller Exchange run is recorded. Do not reuse old server credentials from earlier conversations without the operator explicitly providing current access again.
 
 Release commits:
 
@@ -218,6 +227,8 @@ b701d32 Update version log for v1.0.2
 378d1aa Update version log for v1.0.4
 82275d0 Release v1.0.7 instance verification
 cbc63b3 Update version log for v1.0.7
+5f45543 Release v1.0.8 exchange marketplace
+6fb05d Update version log for v1.0.8
 ```
 
 GitHub workflow proof:
@@ -242,6 +253,9 @@ Build & Release: run 28328429131 completed success for v1.0.4.
 CI: run 28328427937 was still in progress when public API rate limit was reached; local full gates passed and release assets were verified directly.
 Docs Pages: run 28328427964 completed success for main.
 Build & Release: run 28331341360 completed success for v1.0.7.
+Build & Release: run 28353189725 completed success for v1.0.8.
+CI: run 28353187342 completed success for the v1.0.8 version-log push.
+Docs Pages: run 28353187346 completed success for the v1.0.8 version-log push.
 ```
 
 Core release assets verified for `v0.9.9`:
