@@ -56,6 +56,8 @@ const loginViewSource = readRepoFile('client/src/views/LoginView.vue')
 const adminLoginViewSource = readRepoFile('client/src/views/admin/AdminLoginView.vue')
 const registerViewSource = readRepoFile('client/src/views/RegisterView.vue')
 const forgotPasswordViewSource = readRepoFile('client/src/views/ForgotPasswordView.vue')
+const helpViewSource = readRepoFile('client/src/views/HelpView.vue')
+const oauthAuthorizeViewSource = readRepoFile('client/src/views/OAuthAuthorizeView.vue')
 const userApiSource = readRepoFile('client/src/api/index.ts')
 const adminApiSource = readRepoFile('client/src/api/admin.ts')
 const appPathsSource = readRepoFile('client/src/utils/app-paths.ts')
@@ -482,6 +484,20 @@ assert.ok(
     adminUsersViewSource.includes('return `${customerBaseUrl.value}/register/${newInviteCode.value}`') &&
     !adminUsersViewSource.includes('return `${window.location.origin}/register/${newInviteCode.value}`'),
   'admin generated invite links must point to the configured customer frontend origin, not the admin origin'
+)
+assert.ok(
+  helpViewSource.includes('function isHelpArticleNotFoundError(err: unknown): boolean') &&
+    helpViewSource.includes("maybeError.code === 'ARTICLE_NOT_FOUND'") &&
+    helpViewSource.includes("articleError.value = isHelpArticleNotFoundError(err) ? t('help.articleNotFound') : t('help.loadFailed')"),
+  'Help article detail must render ARTICLE_NOT_FOUND as a not-found empty state instead of a generic load failure'
+)
+assert.ok(
+  oauthAuthorizeViewSource.includes('function describeConsentError(err: unknown): { message: string; hint: string }') &&
+    oauthAuthorizeViewSource.includes("apiError?.code === 'OAUTH_CONSENT_FAILED'") &&
+    oauthAuthorizeViewSource.includes('授权应用不可用') &&
+    oauthAuthorizeViewSource.includes('errorHint.value = friendlyError.hint') &&
+    oauthAuthorizeViewSource.includes('v-if="errorHint"'),
+  'OAuth authorize must show a clear unavailable-app hint for invalid or disabled OAuth client consent failures'
 )
 assert.ok(
   appSource.includes("import PublicSiteLayout from '@/components/public/PublicSiteLayout.vue'") &&

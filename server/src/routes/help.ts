@@ -19,6 +19,35 @@ const DEFAULT_CATEGORIES = [
   { id: 'billing', name: '计费相关', color: '#f59e0b' },
   { id: 'faq', name: '常见问题', color: '#ef4444' }
 ]
+const DEFAULT_HELP_ARTICLE_UPDATED_AT = '2026-07-01T00:00:00.000Z'
+const DEFAULT_HELP_ARTICLES = [
+  {
+    id: 0,
+    title: '快速开始使用 Incudal',
+    slug: 'getting-started',
+    content: [
+      '# 快速开始使用 Incudal',
+      '',
+      '欢迎使用 Incudal。你可以先从套餐列表选择合适的地区、套餐和方案，再进入创建实例流程。',
+      '',
+      '## 创建实例',
+      '',
+      '1. 打开套餐列表或控制台里的创建实例页面。',
+      '2. 选择地区、套餐、方案、宿主机、系统镜像和 SSH 密钥。',
+      '3. 提交后在实例列表查看交付和运行状态。',
+      '',
+      '## 账户与工单',
+      '',
+      '如遇到支付、实例交付、网络或资源问题，请在工单中心提交问题并附上实例编号或订单编号。'
+    ].join('\n'),
+    category: 'getting-started',
+    sort_order: 0,
+    published: 1,
+    pinned: 1,
+    created_at: DEFAULT_HELP_ARTICLE_UPDATED_AT,
+    updated_at: DEFAULT_HELP_ARTICLE_UPDATED_AT
+  }
+]
 const POSITIVE_ROUTE_ID_PATTERN = /^[1-9]\d*$/
 const HELP_SLUG_PATTERN = /^[a-z0-9-]+$/
 const MAX_HELP_TITLE_LENGTH = 200
@@ -126,6 +155,34 @@ function normalizeHelpCategoryConfigInput(body: unknown): Array<{ id: string; na
   return categories
 }
 
+async function hasPublishedHelpArticles(): Promise<boolean> {
+  const result = await db.getHelpArticles({ page: 1, pageSize: 1, publishedOnly: true })
+  return result.total > 0
+}
+
+function serializePublicHelpArticleSummary(article: (typeof DEFAULT_HELP_ARTICLES)[number]) {
+  return {
+    id: article.id,
+    title: article.title,
+    slug: article.slug,
+    category: article.category,
+    sort_order: article.sort_order,
+    published: article.published,
+    pinned: article.pinned,
+    created_at: article.created_at,
+    updated_at: article.updated_at,
+    createdAt: article.created_at,
+    updatedAt: article.updated_at
+  }
+}
+
+function serializePublicHelpArticleDetail(article: (typeof DEFAULT_HELP_ARTICLES)[number]) {
+  return {
+    ...serializePublicHelpArticleSummary(article),
+    content: article.content
+  }
+}
+
 export default async function helpRoutes(fastify: FastifyInstance) {
 
   // ==================== 公开 API ====================
@@ -158,12 +215,32 @@ export default async function helpRoutes(fastify: FastifyInstance) {
       search: search || undefined
     })
 
+    const shouldUseDefaultArticles = result.total === 0 &&
+      result.page === 1 &&
+      !category &&
+      !search
+
+    if (shouldUseDefaultArticles) {
+      return {
+        articles: DEFAULT_HELP_ARTICLES.map(serializePublicHelpArticleSummary),
+        total: DEFAULT_HELP_ARTICLES.length,
+        page: result.page,
+        pageSize: result.pageSize,
+        totalPages: 1
+      }
+    }
+
     return {
       articles: result.items.map(a => ({
         id: a.id,
         title: a.title,
         slug: a.slug,
         category: a.category,
+        sort_order: a.sort_order,
+        published: a.published,
+        pinned: a.pinned,
+        created_at: a.created_at,
+        updated_at: a.updated_at,
         createdAt: a.created_at,
         updatedAt: a.updated_at
       })),
@@ -184,7 +261,15 @@ export default async function helpRoutes(fastify: FastifyInstance) {
   }>) => {
     const limitNum = parsePositiveInteger(request.query.limit, 6, 20)
 
-    const articles = await db.getPinnedHelpArticles(limitNum)
+    let articles = await db.getPinnedHelpArticles(limitNum)
+    if (articles.length === 0 && !(await hasPublishedHelpArticles())) {
+      articles = DEFAULT_HELP_ARTICLES.slice(0, limitNum).map(article => ({
+        id: article.id,
+        title: article.title,
+        slug: article.slug,
+        category: article.category
+      }))
+    }
     return { articles }
   })
 
@@ -207,7 +292,10 @@ export default async function helpRoutes(fastify: FastifyInstance) {
    * 获取帮助分类列表（公开）
    */
   fastify.get('/categories', async () => {
-    const categories = await db.getHelpCategories()
+    let categories = await db.getHelpCategories()
+    if (categories.length === 0 && !(await hasPublishedHelpArticles())) {
+      categories = [{ category: DEFAULT_HELP_ARTICLES[0].category, count: DEFAULT_HELP_ARTICLES.length }]
+    }
     return { categories }
   })
 
@@ -219,6 +307,10 @@ export default async function helpRoutes(fastify: FastifyInstance) {
 
     const article = await db.getHelpArticleBySlug(slug)
     if (!article) {
+      const defaultArticle = DEFAULT_HELP_ARTICLES.find(item => item.slug === slug)
+      if (defaultArticle && !(await hasPublishedHelpArticles())) {
+        return { article: serializePublicHelpArticleDetail(defaultArticle) }
+      }
       return reply.code(404).send(apiError(ErrorCode.ARTICLE_NOT_FOUND))
     }
 

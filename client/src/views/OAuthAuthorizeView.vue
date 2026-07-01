@@ -10,6 +10,7 @@ const router = useRouter()
 const loading = ref(true)
 const submitting = ref(false)
 const error = ref('')
+const errorHint = ref('')
 const consent = ref<OAuthProviderConsentResponse | null>(null)
 const scopeCatalog = ref<PublicApiScopeMetadata[]>([])
 
@@ -39,6 +40,24 @@ function redirectTo(url: string) {
   window.location.href = url
 }
 
+function describeConsentError(err: unknown): { message: string; hint: string } {
+  const apiError = err as { code?: unknown; message?: unknown }
+  const message = typeof apiError?.message === 'string' ? apiError.message : String(err)
+  if (
+    apiError?.code === 'OAUTH_CONSENT_FAILED' &&
+    /disabled or missing|invalid client_id|invalid redirect_uri/i.test(message)
+  ) {
+    return {
+      message: '授权应用不可用',
+      hint: '该应用不存在、已停用，或回调地址与配置不匹配。请返回来源页面重新发起授权。'
+    }
+  }
+  return {
+    message: message || 'OAuth 授权请求加载失败',
+    hint: '请确认授权链接完整有效，或稍后重试。'
+  }
+}
+
 function buildDeniedRedirect(): string | null {
   const redirectUri = consent.value?.request.redirectUri || requestParams.value.redirect_uri
   if (!redirectUri) return null
@@ -53,6 +72,7 @@ function buildDeniedRedirect(): string | null {
 async function loadConsent() {
   loading.value = true
   error.value = ''
+  errorHint.value = ''
   try {
     if (!requestParams.value.client_id || !requestParams.value.redirect_uri) {
       throw new Error('OAuth 授权请求缺少 client_id 或 redirect_uri')
@@ -64,7 +84,9 @@ async function loadConsent() {
       await approve()
     }
   } catch (err: any) {
-    error.value = err?.message || String(err)
+    const friendlyError = describeConsentError(err)
+    error.value = friendlyError.message
+    errorHint.value = friendlyError.hint
   } finally {
     loading.value = false
   }
@@ -83,6 +105,7 @@ async function approve() {
   if (submitting.value) return
   submitting.value = true
   error.value = ''
+  errorHint.value = ''
   try {
     const params = requestParams.value
     const response = await api.oauthProvider.confirm({
@@ -95,7 +118,9 @@ async function approve() {
     })
     redirectTo(response.redirectTo)
   } catch (err: any) {
-    error.value = err?.message || String(err)
+    const friendlyError = describeConsentError(err)
+    error.value = friendlyError.message
+    errorHint.value = friendlyError.hint
   } finally {
     submitting.value = false
   }
@@ -129,6 +154,9 @@ onMounted(() => {
         <div v-else-if="error" class="space-y-4">
           <h1 class="text-lg font-semibold text-themed">OAuth 授权失败</h1>
           <p class="text-sm text-red-600">{{ error }}</p>
+          <p v-if="errorHint" class="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+            {{ errorHint }}
+          </p>
           <button class="btn-secondary w-full" @click="router.push('/dashboard')">返回控制台</button>
         </div>
 

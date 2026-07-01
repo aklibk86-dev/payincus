@@ -139,6 +139,20 @@ assert.ok(
   'help category config route must bound category payloads and reject empty/duplicate IDs after trimming'
 )
 
+assert.ok(
+  helpSource.includes('const DEFAULT_HELP_ARTICLES = [') &&
+    helpSource.includes("slug: 'getting-started'") &&
+    helpSource.includes('async function hasPublishedHelpArticles(): Promise<boolean>') &&
+    helpSource.includes('function serializePublicHelpArticleSummary') &&
+    publicListRoute.includes('const shouldUseDefaultArticles = result.total === 0') &&
+    publicListRoute.includes('DEFAULT_HELP_ARTICLES.map(serializePublicHelpArticleSummary)') &&
+    pinnedRoute.includes('articles.length === 0 && !(await hasPublishedHelpArticles())') &&
+    helpSource.includes('categories = [{ category: DEFAULT_HELP_ARTICLES[0].category, count: DEFAULT_HELP_ARTICLES.length }]') &&
+    helpSource.includes('const defaultArticle = DEFAULT_HELP_ARTICLES.find(item => item.slug === slug)') &&
+    helpSource.includes('return { article: serializePublicHelpArticleDetail(defaultArticle) }'),
+  'public help API must expose a built-in getting-started article only when no published help articles exist'
+)
+
 for (const [name, route] of [
   ['create route', createRoute],
   ['update route', updateRoute]

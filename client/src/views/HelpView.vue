@@ -63,6 +63,14 @@ const categoryConfig = ref<Category[]>([
 // 计算属性：是否正在查看文章？
 const isDetailView = computed<boolean>(() => !!(route.params.slug as string | undefined))
 
+function isHelpArticleNotFoundError(err: unknown): boolean {
+  if (!err || typeof err !== 'object') return false
+  const maybeError = err as { code?: unknown; statusCode?: unknown; status?: unknown }
+  return maybeError.code === 'ARTICLE_NOT_FOUND' ||
+    maybeError.statusCode === 404 ||
+    maybeError.status === 404
+}
+
 onMounted(async (): Promise<void> => {
   // 并行加载分类配置和分类列表
   await Promise.all([loadCategoryConfig(), loadCategories()])
@@ -145,7 +153,7 @@ async function loadArticle(slug: string): Promise<void> {
     currentArticle.value = (response as { article?: HelpArticle }).article || null
   } catch (err) {
     console.error('Failed to load article:', err)
-    articleError.value = t('help.loadFailed')
+    articleError.value = isHelpArticleNotFoundError(err) ? t('help.articleNotFound') : t('help.loadFailed')
     currentArticle.value = null
   } finally {
     articleLoading.value = false
