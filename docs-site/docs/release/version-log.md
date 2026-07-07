@@ -6,10 +6,10 @@
 
 ## 最新发布状态 / Latest Release State
 
-- 最新发布提交 / Latest Release Commit: `44054e29e`
-- 提交日期 / Commit date: 2026-07-01
-- 提交说明 / Commit subject: Release v1.2.11 service worker cache version
-- 最新 tag / Latest tag: `v1.2.11`
+- 最新发布提交 / Latest Release Commit: `df34eacf9`
+- 提交日期 / Commit date: 2026-07-08
+- 提交说明 / Commit subject: Release v1.2.12 UI and stability fixes
+- 最新 tag / Latest tag: `v1.2.12`
 
 ## 未发布变更 / Unreleased Changes
 
@@ -17,9 +17,24 @@
 
 ## 历史版本 / Historical Versions
 
+## v1.2.12
+
+- 发布提交 / Release commit: `df34eacf9`
+- 提交日期 / Commit date: 2026-07-08
+- 提交说明 / Commit subject: Release v1.2.12 UI and stability fixes
+
+# v1.2.12
+
+## 修复与稳定性
+
+- 修复实例改配预览的套餐价格单位，避免分/元混用导致用户看到错误差价。
+- 扩展市场和主题市场读取失败时列表页改为安全降级为空列表，安装路径仍保留受信源、SHA256 与包结构校验。
+- 修复注册、忘记密码、钱包、资源、实例、后台设置、扩展中心、账单、工单等页面在本地 PC/移动端 UI 扫描中暴露的布局与链路问题。
+- 同步 Service Worker 静态缓存名到 `v1.2.12`，确保 `/sw.js?v=1.2.12` 激活后清理旧版本静态资源缓存。
+
 ## v1.2.11
 
-- 发布提交 / Release commit: `44054e29e`
+- 发布提交 / Release commit: `17d1d2265`
 - 提交日期 / Commit date: 2026-07-01
 - 提交说明 / Commit subject: Release v1.2.11 service worker cache version
 
@@ -41,7 +56,7 @@
 
 ## v1.2.10
 
-- 发布提交 / Release commit: `19a4623aa`
+- 发布提交 / Release commit: `f1452aeff`
 - 提交日期 / Commit date: 2026-07-01
 - 提交说明 / Commit subject: Release v1.2.10 help and OAuth fallback fixes
 
@@ -67,7 +82,7 @@
 
 ## v1.2.9
 
-- 发布提交 / Release commit: `f8249da10`
+- 发布提交 / Release commit: `014c5af45`
 - 提交日期 / Commit date: 2026-07-01
 - 提交说明 / Commit subject: Release v1.2.9 auth Turnstile cache hotfix
 
@@ -91,7 +106,7 @@
 
 ## v1.2.8
 
-- 发布提交 / Release commit: `e1280b967`
+- 发布提交 / Release commit: `7d166c288`
 - 提交日期 / Commit date: 2026-07-01
 - 提交说明 / Commit subject: Release v1.2.8 auth and OTA cache hotfix
 
@@ -115,7 +130,7 @@
 
 ## v1.2.7
 
-- 发布提交 / Release commit: `8c69a032f`
+- 发布提交 / Release commit: `948db6ad1`
 - 提交日期 / Commit date: 2026-07-01
 - 提交说明 / Commit subject: Release v1.2.7 kawaii UI refresh
 
@@ -139,7 +154,7 @@
 
 ## v1.2.6
 
-- 发布提交 / Release commit: `ebf963345`
+- 发布提交 / Release commit: `c911ba74e`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.6 exchange wallet audit atomicity
 
@@ -160,7 +175,7 @@
 
 ## v1.2.5
 
-- 发布提交 / Release commit: `30e81c439`
+- 发布提交 / Release commit: `e3315f1b4`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.5 exchange manual settlement
 
@@ -184,7 +199,7 @@
 
 ## v1.2.4
 
-- 发布提交 / Release commit: `7fd01ea2b`
+- 发布提交 / Release commit: `b3194f5b4`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.4 exchange lock polish
 
@@ -206,7 +221,7 @@
 
 ## v1.2.3
 
-- 发布提交 / Release commit: `a34afc734`
+- 发布提交 / Release commit: `7d8fede72`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.3 exchange marketplace polish
 
@@ -227,7 +242,7 @@
 
 ## v1.2.2
 
-- 发布提交 / Release commit: `c9ed099fc`
+- 发布提交 / Release commit: `39297c216`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.2 exchange listing hardening
 
@@ -248,7 +263,7 @@
 
 ## v1.2.1
 
-- 发布提交 / Release commit: `6fcf173f1`
+- 发布提交 / Release commit: `6af8599dc`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.1 exchange withdrawal hardening
 
@@ -268,7 +283,7 @@
 
 ## v1.2.0
 
-- 发布提交 / Release commit: `377f7f449`
+- 发布提交 / Release commit: `8236f8602`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.2.0 exchange hardening
 
@@ -291,7 +306,7 @@
 
 ## v1.1.9
 
-- 发布提交 / Release commit: `6b371bc07`
+- 发布提交 / Release commit: `d0bb415af`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.9 exchange dispute refund atomicity
 
@@ -311,7 +326,7 @@
 
 ## v1.1.8
 
-- 发布提交 / Release commit: `aaaca037b`
+- 发布提交 / Release commit: `16ab788da`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.8 exchange dispute release atomicity
 
@@ -331,7 +346,7 @@
 
 ## v1.1.7
 
-- 发布提交 / Release commit: `9c5425c60`
+- 发布提交 / Release commit: `c439fb4a8`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.7 exchange seller settlement privacy
 
@@ -351,7 +366,7 @@
 
 ## v1.1.6
 
-- 发布提交 / Release commit: `9009dcf8a`
+- 发布提交 / Release commit: `a0fa6db11`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.6 exchange traffic audit wording
 
@@ -372,7 +387,7 @@
 
 ## v1.1.5
 
-- 发布提交 / Release commit: `cb5c33ccb`
+- 发布提交 / Release commit: `b4d56d464`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.5 exchange active dispute guards
 
@@ -393,7 +408,7 @@
 
 ## v1.1.4
 
-- 发布提交 / Release commit: `03b06df33`
+- 发布提交 / Release commit: `0e4a86e51`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.4 exchange auto snapshot lock
 
@@ -413,7 +428,7 @@
 
 ## v1.1.3
 
-- 发布提交 / Release commit: `56d3f245d`
+- 发布提交 / Release commit: `dcbbc5a59`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.3 exchange anonymity hardening
 
@@ -434,7 +449,7 @@
 
 ## v1.1.2
 
-- 发布提交 / Release commit: `616d836fa`
+- 发布提交 / Release commit: `f6f4d6946`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.2 exchange traffic wording
 
@@ -456,7 +471,7 @@
 
 ## v1.1.1
 
-- 发布提交 / Release commit: `eb6e228f7`
+- 发布提交 / Release commit: `c3099ec50`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: fix exchange refund return flow
 
@@ -475,7 +490,7 @@
 
 ## v1.1.0
 
-- 发布提交 / Release commit: `0c1eaa0be`
+- 发布提交 / Release commit: `d5bddbcf8`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.1.0 exchange delivery fix
 
@@ -490,7 +505,7 @@ Fix Exchange Marketplace forced-reinstall delivery after live testing found Incu
 
 ## v1.0.9
 
-- 发布提交 / Release commit: `1b3079211`
+- 发布提交 / Release commit: `7ef8a144e`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.0.9 exchange marketplace fixes
 
@@ -508,7 +523,7 @@ Harden Exchange Marketplace purchase/display behavior and fix registration Turns
 
 ## v1.0.8
 
-- 发布提交 / Release commit: `5f45543e0`
+- 发布提交 / Release commit: `f41632471`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.0.8 exchange marketplace
 
@@ -526,7 +541,7 @@ Release the first complete Exchange Marketplace implementation and close the lat
 
 ## v1.0.7
 
-- 发布提交 / Release commit: `82275d089`
+- 发布提交 / Release commit: `a6c0838ce`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.0.7 instance verification
 
@@ -534,7 +549,7 @@ Release the first complete Exchange Marketplace implementation and close the lat
 
 ## v1.0.6
 
-- 发布提交 / Release commit: `5c8d3b8e1`
+- 发布提交 / Release commit: `275e91ddc`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.0.6 flash sale editing
 
@@ -548,7 +563,7 @@ Release the first complete Exchange Marketplace implementation and close the lat
 
 ## v1.0.5
 
-- 发布提交 / Release commit: `4d0dd50dd`
+- 发布提交 / Release commit: `2a6e2bfce`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.0.5 flash sales
 
@@ -562,7 +577,7 @@ Release the first complete Exchange Marketplace implementation and close the lat
 
 ## v1.0.4
 
-- 发布提交 / Release commit: `2bd25ba5a`
+- 发布提交 / Release commit: `d3a4a78a9`
 - 提交日期 / Commit date: 2026-06-29
 - 提交说明 / Commit subject: Release v1.0.4 resource risk policy hardening
 
@@ -576,7 +591,7 @@ Add a dedicated resource-risk QoS notification template and show users an upfron
 
 ## v1.0.3
 
-- 发布提交 / Release commit: `09670ad88`
+- 发布提交 / Release commit: `a6b15797e`
 - 提交日期 / Commit date: 2026-06-28
 - 提交说明 / Commit subject: Release v1.0.3 package delivery hotfix
 
@@ -592,7 +607,7 @@ Restore the Germany `DEBGP` production package configuration by binding it back 
 
 ## v1.0.2
 
-- 发布提交 / Release commit: `08362032d`
+- 发布提交 / Release commit: `02a9bec30`
 - 提交日期 / Commit date: 2026-06-28
 - 提交说明 / Commit subject: Release v1.0.2 welfare check-in
 
@@ -610,7 +625,7 @@ Update the customer instance cards with clearer LXC/KVM, IPv4 NAT/dedicated netw
 
 ## v1.0.1
 
-- 发布提交 / Release commit: `eca273ce9`
+- 发布提交 / Release commit: `0e5d04951`
 - 提交日期 / Commit date: 2026-06-28
 - 提交说明 / Commit subject: Release v1.0.1 network delivery
 
@@ -628,7 +643,7 @@ Update the host install script and hosting documentation so new nodes no longer 
 
 ## v1.0.0
 
-- 发布提交 / Release commit: `8d722fe78`
+- 发布提交 / Release commit: `b2857f492`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Update handoff for DEBGP closure
 
@@ -706,7 +721,7 @@ v1.0.0 标志着 PayIncus 从快速迭代进入正式运营阶段。本版本重
 
 ## v0.9.9
 
-- 发布提交 / Release commit: `e64ad2c6c`
+- 发布提交 / Release commit: `085ff7896`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Release v0.9.9
 
@@ -718,7 +733,7 @@ Add guard coverage so future split-deployment changes cannot reintroduce old pub
 
 ## v0.9.8
 
-- 发布提交 / Release commit: `a69542b4d`
+- 发布提交 / Release commit: `f3750bde0`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Release v0.9.8
 
@@ -730,7 +745,7 @@ Add DB readiness detail that identifies active payment providers without built-i
 
 ## v0.9.7
 
-- 发布提交 / Release commit: `6fb574b3b`
+- 发布提交 / Release commit: `27cb9f5b8`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Release v0.9.7
 
@@ -740,7 +755,7 @@ Keep evidence snapshot cards, tables, and JSON blocks readable instead of inheri
 
 ## v0.9.6
 
-- 发布提交 / Release commit: `031d93c58`
+- 发布提交 / Release commit: `dd0816dc8`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Release v0.9.6
 
@@ -750,7 +765,7 @@ Update production readiness warnings and docs to describe CPU, memory and disk c
 
 ## v0.9.5
 
-- 发布提交 / Release commit: `4fb5d0392`
+- 发布提交 / Release commit: `2e584b9e5`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Release v0.9.5
 
@@ -760,57 +775,57 @@ Keep docs version logs focused on real release changes by filtering handoff and 
 
 ## v0.9.4
 
-- 发布提交 / Release commit: `15e6c63cd`
+- 发布提交 / Release commit: `cdb1386ca`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Close OTA worker database on skipped duplicate
 
 ### 其他变更 / Other Changes
 
-- Close OTA worker database on skipped duplicate `15e6c63cd`
+- Close OTA worker database on skipped duplicate `cdb1386ca`
 
 ## v0.9.3
 
-- 发布提交 / Release commit: `d1290ac3b`
+- 发布提交 / Release commit: `2b5aa5dac`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Guard OTA workers against duplicate starts
 
 ### 其他变更 / Other Changes
 
-- Guard OTA workers against duplicate starts `d1290ac3b`
+- Guard OTA workers against duplicate starts `2b5aa5dac`
 
 ## v0.9.2
 
-- 发布提交 / Release commit: `e67fc89c7`
+- 发布提交 / Release commit: `804fb5270`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Handle Turnstile in split auth smoke
 
 ### 其他变更 / Other Changes
 
-- Handle Turnstile in split auth smoke `e67fc89c7`
+- Handle Turnstile in split auth smoke `804fb5270`
 
 ## v0.9.1
 
-- 发布提交 / Release commit: `763baaf90`
+- 发布提交 / Release commit: `e46a425a7`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Fix split auth smoke in production artifacts
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix split auth smoke in production artifacts `763baaf90`
+- Fix split auth smoke in production artifacts `e46a425a7`
 
 ## v0.9.0
 
-- 发布提交 / Release commit: `aa087db3b`
+- 发布提交 / Release commit: `6a619cfe2`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Release v0.9.0
 
 ### 其他变更 / Other Changes
 
-- Document resource risk operations `430d0bc28`
+- Document resource risk operations `df780538c`
 
 ## v0.8.9
 
-- 发布提交 / Release commit: `bf3d86ef0`
+- 发布提交 / Release commit: `857e892d0`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Update version log for v0.8.9
 
@@ -818,7 +833,7 @@ Resource risk admin pagination and source-scoped manual order restriction contro
 
 ## v0.8.8
 
-- 发布提交 / Release commit: `359501c12`
+- 发布提交 / Release commit: `5c03ca250`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Update version log for v0.8.8
 
@@ -826,77 +841,77 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.8.7
 
-- 发布提交 / Release commit: `8df363493`
+- 发布提交 / Release commit: `d7830b694`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Fix instance plan upgrade capacity checks
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix instance plan upgrade capacity checks `8df363493`
+- Fix instance plan upgrade capacity checks `d7830b694`
 
 ## v0.8.6
 
-- 发布提交 / Release commit: `20f9209af`
+- 发布提交 / Release commit: `99771ce16`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Add manual resource risk controls
 
 ### 新增能力 / New Capabilities
 
-- Add manual resource risk controls `20f9209af`
+- Add manual resource risk controls `99771ce16`
 
 ## v0.8.5
 
-- 发布提交 / Release commit: `51e2df00f`
+- 发布提交 / Release commit: `394e92c05`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Harden OTA Prisma client generation
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden OTA Prisma client generation `51e2df00f`
+- Harden OTA Prisma client generation `394e92c05`
 
 ## v0.8.4
 
-- 发布提交 / Release commit: `7c476d272`
+- 发布提交 / Release commit: `513f88bad`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Add instance resource risk center
 
 ### 新增能力 / New Capabilities
 
-- Add instance resource risk center `7c476d272`
+- Add instance resource risk center `513f88bad`
 
 ## v0.8.3
 
-- 发布提交 / Release commit: `1a82f05ec`
+- 发布提交 / Release commit: `576d1382e`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Fix instance bandwidth and billing nav display
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix instance bandwidth and billing nav display `1a82f05ec`
+- Fix instance bandwidth and billing nav display `576d1382e`
 
 ## v0.8.2
 
-- 发布提交 / Release commit: `4f5bb5ec1`
+- 发布提交 / Release commit: `fe79137ec`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Add package traffic reset pricing
 
 ### 新增能力 / New Capabilities
 
-- Add package traffic reset pricing `4f5bb5ec1`
+- Add package traffic reset pricing `fe79137ec`
 
 ## v0.8.1
 
-- 发布提交 / Release commit: `4a131d7a9`
+- 发布提交 / Release commit: `8dfa597e7`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Harden storage readiness and traffic reset
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden storage readiness and traffic reset `4a131d7a9`
+- Harden storage readiness and traffic reset `8dfa597e7`
 
 ## v0.6.19
 
-- 发布提交 / Release commit: `d60bf6d5f`
+- 发布提交 / Release commit: `19ae72719`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Fix instance transfer path release guard
 
@@ -906,7 +921,7 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.18
 
-- 发布提交 / Release commit: `5c8668a9f`
+- 发布提交 / Release commit: `d69254c73`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Polish instance cards and creation naming
 
@@ -917,7 +932,7 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.17
 
-- 发布提交 / Release commit: `e9c266ed0`
+- 发布提交 / Release commit: `7c62431e9`
 - 提交日期 / Commit date: 2026-06-27
 - 提交说明 / Commit subject: Polish UI structure and docs for v0.6.17
 
@@ -930,7 +945,7 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.16
 
-- 发布提交 / Release commit: `69ac3840a`
+- 发布提交 / Release commit: `8639b5a6e`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Fix gift card Turnstile body verification
 
@@ -944,57 +959,57 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.15
 
-- 发布提交 / Release commit: `e3963e086`
+- 发布提交 / Release commit: `e67c9603f`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Persist expired gift card state
 
 ### 其他变更 / Other Changes
 
-- Persist expired gift card state `e3963e086`
+- Persist expired gift card state `e67c9603f`
 
 ## v0.6.14
 
-- 发布提交 / Release commit: `370be981b`
+- 发布提交 / Release commit: `d0389797f`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Fix gift card Turnstile token flow
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix gift card Turnstile token flow `370be981b`
+- Fix gift card Turnstile token flow `d0389797f`
 
 ## v0.6.13
 
-- 发布提交 / Release commit: `f28e86037`
+- 发布提交 / Release commit: `dae1a64c5`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Fix user gift card Turnstile verification
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix user gift card Turnstile verification `f28e86037`
+- Fix user gift card Turnstile verification `dae1a64c5`
 
 ## v0.6.12
 
-- 发布提交 / Release commit: `f7544939f`
+- 发布提交 / Release commit: `2fcc75bfb`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Fix admin gift card generation Turnstile gate
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix admin gift card generation Turnstile gate `f7544939f`
+- Fix admin gift card generation Turnstile gate `2fcc75bfb`
 
 ## v0.6.11
 
-- 发布提交 / Release commit: `4db8d4582`
+- 发布提交 / Release commit: `6b0bf1232`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Add operations settings center
 
 ### 新增能力 / New Capabilities
 
-- Add operations settings center `4db8d4582`
+- Add operations settings center `6b0bf1232`
 
 ## v0.6.10
 
-- 发布提交 / Release commit: `11ecc4b27`
+- 发布提交 / Release commit: `1cb4f76b2`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Add gift card center
 
@@ -1016,7 +1031,7 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.9
 
-- 发布提交 / Release commit: `369212f8e`
+- 发布提交 / Release commit: `85d952b53`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Fix extension market public domain
 
@@ -1028,7 +1043,7 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.8
 
-- 发布提交 / Release commit: `809db50fc`
+- 发布提交 / Release commit: `0081f7a11`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Fix extension platform release guards
 
@@ -1040,7 +1055,7 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.7
 
-- 发布提交 / Release commit: `d1737465f`
+- 发布提交 / Release commit: `6c379b074`
 - 提交日期 / Commit date: 2026-06-26
 - 提交说明 / Commit subject: Build extension platform and theme system
 
@@ -1054,149 +1069,149 @@ PayIncus independent baseline release with rebuilt public docs, SDK examples, ex
 
 ## v0.6.6
 
-- 发布提交 / Release commit: `9fcbe2867`
+- 发布提交 / Release commit: `2cf168cbe`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Skip source smoke in artifact acceptance / 验收脚本跳过产物源码 smoke
 
 ### 其他变更 / Other Changes
 
-- Skip source smoke in artifact acceptance / 验收脚本跳过产物源码 smoke `9fcbe2867`
+- Skip source smoke in artifact acceptance / 验收脚本跳过产物源码 smoke `2cf168cbe`
 
 ## v0.6.5
 
-- 发布提交 / Release commit: `cefd77acc`
+- 发布提交 / Release commit: `d80fe844d`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Update final proof scope waiver / 更新最终验收豁免口径
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Update final proof scope waiver / 更新最终验收豁免口径 `cefd77acc`
+- Update final proof scope waiver / 更新最终验收豁免口径 `d80fe844d`
 
 ## v0.6.4
 
-- 发布提交 / Release commit: `5eff38f15`
+- 发布提交 / Release commit: `94faf5c67`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Update production proof workspace status / 更新生产验收工作台状态
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Update production proof workspace status / 更新生产验收工作台状态 `5eff38f15`
+- Update production proof workspace status / 更新生产验收工作台状态 `94faf5c67`
 
 ## v0.6.3
 
-- 发布提交 / Release commit: `54aa45a2c`
+- 发布提交 / Release commit: `e42ee2b15`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Harden Lsky commit proof permissions / 加固 Lsky 提交证明权限检查
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden Lsky commit proof permissions / 加固 Lsky 提交证明权限检查 `54aa45a2c`
+- Harden Lsky commit proof permissions / 加固 Lsky 提交证明权限检查 `e42ee2b15`
 
 ## v0.6.2
 
-- 发布提交 / Release commit: `0f67f1d2f`
+- 发布提交 / Release commit: `49f484ec3`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Force artifact OTA dependency install / 强制重建 OTA 制品依赖
 
 ### 其他变更 / Other Changes
 
-- Force artifact OTA dependency install / 强制重建 OTA 制品依赖 `0f67f1d2f`
+- Force artifact OTA dependency install / 强制重建 OTA 制品依赖 `49f484ec3`
 
 ## v0.6.1
 
-- 发布提交 / Release commit: `0b408cc81`
+- 发布提交 / Release commit: `08ad73d59`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Harden Lsky proof and artifact install output / 加固 Lsky proof 与制品安装输出
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden Lsky proof and artifact install output / 加固 Lsky proof 与制品安装输出 `0b408cc81`
+- Harden Lsky proof and artifact install output / 加固 Lsky proof 与制品安装输出 `08ad73d59`
 
 ## v0.6.0
 
-- 发布提交 / Release commit: `50f0f8b96`
+- 发布提交 / Release commit: `dd81058ff`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Summarize Lsky proof token abilities / 汇总 Lsky proof token 权限
 
 ### 其他变更 / Other Changes
 
-- Summarize Lsky proof token abilities / 汇总 Lsky proof token 权限 `50f0f8b96`
+- Summarize Lsky proof token abilities / 汇总 Lsky proof token 权限 `dd81058ff`
 
 ## v0.5.9
 
-- 发布提交 / Release commit: `800c5092e`
+- 发布提交 / Release commit: `5738eb89e`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Harden artifact OTA install directory handling
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden artifact OTA install directory handling `800c5092e`
+- Harden artifact OTA install directory handling `5738eb89e`
 
 ## v0.5.8
 
-- 发布提交 / Release commit: `976a38a84`
+- 发布提交 / Release commit: `e687afc70`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Update production proof workspace status
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Update production proof workspace status `976a38a84`
+- Update production proof workspace status `e687afc70`
 
 ### 其他变更 / Other Changes
 
-- Document safe Lsky cleanup proof boundary `813d8c04c`
+- Document safe Lsky cleanup proof boundary `5cbf7d734`
 
 ## v0.5.7
 
-- 发布提交 / Release commit: `d470e7b36`
+- 发布提交 / Release commit: `921168bf4`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Harden online update runner environment
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden online update runner environment `d470e7b36`
+- Harden online update runner environment `921168bf4`
 
 ### 其他变更 / Other Changes
 
-- Record latest Lsky proof access attempt `6c086cd3e`
+- Record latest Lsky proof access attempt `3178e60af`
 
 ## v0.5.6
 
-- 发布提交 / Release commit: `79d00defc`
+- 发布提交 / Release commit: `ea1d4d812`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add Lsky production proof script
 
 ### 新增能力 / New Capabilities
 
-- Add Lsky production proof script `79d00defc`
+- Add Lsky production proof script `ea1d4d812`
 
 ### 其他变更 / Other Changes
 
-- Document Lsky cleanup blocker evidence `9c04f22f7`
+- Document Lsky cleanup blocker evidence `b41fec0a7`
 
 ## v0.5.5
 
-- 发布提交 / Release commit: `80d353edb`
+- 发布提交 / Release commit: `f92545e7b`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Expose SMTP provider proof metadata
 
 ### 其他变更 / Other Changes
 
-- Expose SMTP provider proof metadata `80d353edb`
+- Expose SMTP provider proof metadata `f92545e7b`
 
 ## v0.5.4
 
-- 发布提交 / Release commit: `bbae57c1b`
+- 发布提交 / Release commit: `b3279626c`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Update production proof workspace status
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Update production proof workspace status `bbae57c1b`
+- Update production proof workspace status `b3279626c`
 
 ## v0.5.3
 
-- 发布提交 / Release commit: `2e99abc73`
+- 发布提交 / Release commit: `800036838`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add production DB restore drill proof
 
@@ -1204,7 +1219,7 @@ Add a repeatable production database restore drill script and update the product
 
 ## v0.5.2
 
-- 发布提交 / Release commit: `4f5b3f076`
+- 发布提交 / Release commit: `e0a630fc0`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add Lsky delete diagnostics
 
@@ -1212,7 +1227,7 @@ Log non-sensitive Lsky delete status/body/error diagnostics and avoid treating p
 
 ## v0.5.1
 
-- 发布提交 / Release commit: `b8eabc097`
+- 发布提交 / Release commit: `498b824c2`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix Lsky v2 image deletion
 
@@ -1220,7 +1235,7 @@ Preserve numeric Lsky v2 photo IDs and delete images through the official batch 
 
 ## v0.5.0
 
-- 发布提交 / Release commit: `cd8797b45`
+- 发布提交 / Release commit: `5fa3402a8`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix production proof workspace progress
 
@@ -1228,7 +1243,7 @@ Use the ledger-backed 7/13 Category 13 proof count in the admin production proof
 
 ## v0.4.9
 
-- 发布提交 / Release commit: `7ae496731`
+- 发布提交 / Release commit: `0854f27c1`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix Lsky upload cleanup identifier / 修复 Lsky 上传清理标识
 
@@ -1236,31 +1251,31 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.4.8
 
-- 发布提交 / Release commit: `326cab141`
+- 发布提交 / Release commit: `f1f7d2ef1`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add production proof workspace / 新增生产验收工作台
 
 ### 新增能力 / New Capabilities
 
-- Add production proof workspace / 新增生产验收工作台 `326cab141`
+- Add production proof workspace / 新增生产验收工作台 `f1f7d2ef1`
 
 ### 其他变更 / Other Changes
 
-- Document v0.4.7 cache deployment notes / 记录 v0.4.7 缓存部署说明 `4ce40baf9`
+- Document v0.4.7 cache deployment notes / 记录 v0.4.7 缓存部署说明 `0d027a027`
 
 ## v0.4.7
 
-- 发布提交 / Release commit: `4f5995da2`
+- 发布提交 / Release commit: `6e84d84eb`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix ticket AI runtime calls and SPA cache headers / 修复工单 AI 运行时调用与 SPA 缓存头
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix ticket AI runtime calls and SPA cache headers / 修复工单 AI 运行时调用与 SPA 缓存头 `4f5995da2`
+- Fix ticket AI runtime calls and SPA cache headers / 修复工单 AI 运行时调用与 SPA 缓存头 `6e84d84eb`
 
 ## v0.4.6
 
-- 发布提交 / Release commit: `b92a5a093`
+- 发布提交 / Release commit: `a256544b5`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add plugin market governance / 新增插件市场治理
 
@@ -1281,67 +1296,67 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.4.5
 
-- 发布提交 / Release commit: `d0d0c0612`
+- 发布提交 / Release commit: `fb8ac8dcc`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix ticket AI cached API fallback / 修复工单 AI 缓存 API 兜底
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix ticket AI cached API fallback / 修复工单 AI 缓存 API 兜底 `d0d0c0612`
+- Fix ticket AI cached API fallback / 修复工单 AI 缓存 API 兜底 `fb8ac8dcc`
 
 ## v0.4.4
 
-- 发布提交 / Release commit: `68abb173d`
+- 发布提交 / Release commit: `df69316e6`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add capacity and cost operations view / 新增容量与成本运营视图
 
 ### 新增能力 / New Capabilities
 
-- Add capacity and cost operations view / 新增容量与成本运营视图 `68abb173d`
+- Add capacity and cost operations view / 新增容量与成本运营视图 `df69316e6`
 
 ## v0.4.3
 
-- 发布提交 / Release commit: `b186fa869`
+- 发布提交 / Release commit: `f96306cd0`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix ticket AI runtime fallback / 修复工单 AI 运行时兜底
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix ticket AI runtime fallback / 修复工单 AI 运行时兜底 `b186fa869`
+- Fix ticket AI runtime fallback / 修复工单 AI 运行时兜底 `f96306cd0`
 
 ## v0.4.2
 
-- 发布提交 / Release commit: `7f574ae8e`
+- 发布提交 / Release commit: `cde2bb9dc`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix ticket AI actions and panel cert paths / 修复工单 AI 与面板证书路径
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix ticket AI actions and panel cert paths / 修复工单 AI 与面板证书路径 `7f574ae8e`
+- Fix ticket AI actions and panel cert paths / 修复工单 AI 与面板证书路径 `cde2bb9dc`
 
 ## v0.4.1
 
-- 发布提交 / Release commit: `dfb490060`
+- 发布提交 / Release commit: `350ffc744`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Show installed plugin settings in sidebar / 安装后显示插件设置入口
 
 ### 其他变更 / Other Changes
 
-- Show installed plugin settings in sidebar / 安装后显示插件设置入口 `dfb490060`
+- Show installed plugin settings in sidebar / 安装后显示插件设置入口 `350ffc744`
 
 ## v0.4.0
 
-- 发布提交 / Release commit: `b4d4cce11`
+- 发布提交 / Release commit: `58e5e6d82`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add standalone plugin settings pages / 新增独立插件设置页
 
 ### 新增能力 / New Capabilities
 
-- Add standalone plugin settings pages / 新增独立插件设置页 `b4d4cce11`
+- Add standalone plugin settings pages / 新增独立插件设置页 `58e5e6d82`
 
 ## v0.3.9
 
-- 发布提交 / Release commit: `f009c7e01`
+- 发布提交 / Release commit: `77088a4c0`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Localize AI plugin settings UI / 中文化 AI 插件设置界面
 
@@ -1362,7 +1377,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.3.8
 
-- 发布提交 / Release commit: `92cda32ef`
+- 发布提交 / Release commit: `596f5582c`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Publish AI ticket plugin market assets / 发布 AI 工单插件市场资产
 
@@ -1383,7 +1398,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.3.7
 
-- 发布提交 / Release commit: `bbf36c931`
+- 发布提交 / Release commit: `266f52d55`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Fix admin benefits localization bundle / 修复后台福利本地化打包
 
@@ -1401,7 +1416,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.3.6
 
-- 发布提交 / Release commit: `8b5ad55d1`
+- 发布提交 / Release commit: `773843087`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add risk audit logging center / 新增风控审计日志中心
 
@@ -1425,7 +1440,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.3.5
 
-- 发布提交 / Release commit: `a28cf91cb`
+- 发布提交 / Release commit: `7e9f95a8c`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Harden plugin assets and benefits localization / 加固插件资产并修复福利本地化
 
@@ -1445,77 +1460,77 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.3.4
 
-- 发布提交 / Release commit: `2babf9d8e`
+- 发布提交 / Release commit: `b8940ed94`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Require AI ticket reply confidence checks / 增加 AI 工单回复置信度检查
 
 ### 其他变更 / Other Changes
 
-- Require AI ticket reply confidence checks / 增加 AI 工单回复置信度检查 `2babf9d8e`
+- Require AI ticket reply confidence checks / 增加 AI 工单回复置信度检查 `b8940ed94`
 
 ## v0.3.3
 
-- 发布提交 / Release commit: `28dd2dede`
+- 发布提交 / Release commit: `6be829072`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Harden AI ticket takeover safeguards / 加固 AI 工单接管安全边界
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden AI ticket takeover safeguards / 加固 AI 工单接管安全边界 `28dd2dede`
+- Harden AI ticket takeover safeguards / 加固 AI 工单接管安全边界 `6be829072`
 
 ## v0.3.2
 
-- 发布提交 / Release commit: `651f0ba1d`
+- 发布提交 / Release commit: `d2004e4c8`
 - 提交日期 / Commit date: 2026-06-25
 - 提交说明 / Commit subject: Add user lifecycle operations center / 新增用户生命周期运营中心
 
 ### 新增能力 / New Capabilities
 
-- Add user lifecycle operations center / 新增用户生命周期运营中心 `651f0ba1d`
+- Add user lifecycle operations center / 新增用户生命周期运营中心 `d2004e4c8`
 
 ## v0.3.1
 
-- 发布提交 / Release commit: `c71ade8cd`
+- 发布提交 / Release commit: `51be2d4ac`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add customer success ticket workspace / 新增客服成功工单工作台
 
 ### 新增能力 / New Capabilities
 
-- Add customer success ticket workspace / 新增客服成功工单工作台 `c71ade8cd`
+- Add customer success ticket workspace / 新增客服成功工单工作台 `51be2d4ac`
 
 ## v0.3.0
 
-- 发布提交 / Release commit: `a721de8c1`
+- 发布提交 / Release commit: `2fd3336da`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add SLA alert center / 新增 SLA 告警中心
 
 ### 新增能力 / New Capabilities
 
-- Add SLA alert center / 新增 SLA 告警中心 `a721de8c1`
+- Add SLA alert center / 新增 SLA 告警中心 `2fd3336da`
 
 ## v0.2.9
 
-- 发布提交 / Release commit: `62825b809`
+- 发布提交 / Release commit: `9f11bee2b`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add delivery assurance operations workflow / 新增交付保障运营闭环
 
 ### 新增能力 / New Capabilities
 
-- Add delivery assurance operations workflow / 新增交付保障运营闭环 `62825b809`
+- Add delivery assurance operations workflow / 新增交付保障运营闭环 `9f11bee2b`
 
 ## v0.2.8
 
-- 发布提交 / Release commit: `dc95c91e8`
+- 发布提交 / Release commit: `7e8a29e43`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add financial reconciliation workflow / 新增财务对账闭环
 
 ### 新增能力 / New Capabilities
 
-- Add financial reconciliation workflow / 新增财务对账闭环 `dc95c91e8`
+- Add financial reconciliation workflow / 新增财务对账闭环 `7e8a29e43`
 
 ## v0.2.7
 
-- 发布提交 / Release commit: `5de795a23`
+- 发布提交 / Release commit: `7f6f66e29`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add order payment operations workflow / 新增订单支付运营闭环
 
@@ -1552,7 +1567,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.2.6
 
-- 发布提交 / Release commit: `e282b6346`
+- 发布提交 / Release commit: `0f327fe1f`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add commercial operations overview / 新增商业运营总览
 
@@ -1573,7 +1588,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.2.5
 
-- 发布提交 / Release commit: `49959a2e7`
+- 发布提交 / Release commit: `1c3b63086`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Harden OTA cleanup and disk preflight / 加固 OTA 清理与磁盘预检
 
@@ -1594,43 +1609,43 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.2.4
 
-- 发布提交 / Release commit: `0eb2178f7`
+- 发布提交 / Release commit: `12bcebeb2`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add balance adjustment approval / 新增调账审批流
 
 ### 新增能力 / New Capabilities
 
-- Add balance adjustment approval / 新增调账审批流 `0eb2178f7`
+- Add balance adjustment approval / 新增调账审批流 `12bcebeb2`
 
 ## v0.2.3
 
-- 发布提交 / Release commit: `21a678cb4`
+- 发布提交 / Release commit: `9d03a7b6c`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add order exception handling / 新增订单异常处理
 
 ### 新增能力 / New Capabilities
 
-- Add order exception handling / 新增订单异常处理 `21a678cb4`
+- Add order exception handling / 新增订单异常处理 `9d03a7b6c`
 
 ## v0.2.2
 
-- 发布提交 / Release commit: `3c641c9b6`
+- 发布提交 / Release commit: `2311b2442`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add unified order center / 新增统一订单中心
 
 ### 新增能力 / New Capabilities
 
-- Add unified order center / 新增统一订单中心 `3c641c9b6`
-- Revert "Add demo login and read-only safeguards / 新增演示登录与只读保护" `a7b1825ac`
-- Add demo login and read-only safeguards / 新增演示登录与只读保护 `07592a786`
+- Add unified order center / 新增统一订单中心 `2311b2442`
+- Revert "Add demo login and read-only safeguards / 新增演示登录与只读保护" `bf96cde42`
+- Add demo login and read-only safeguards / 新增演示登录与只读保护 `7be458969`
 
 ### 其他变更 / Other Changes
 
-- Separate demo docs from production guides / 区分演示文档与生产指南 `458dad6aa`
+- Separate demo docs from production guides / 区分演示文档与生产指南 `4978cf845`
 
 ## v0.2.1
 
-- 发布提交 / Release commit: `e8cca3906`
+- 发布提交 / Release commit: `815dd2f73`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Allow installer to set initial admin email / 允许安装器设置初始管理员邮箱
 
@@ -1653,7 +1668,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.2.0
 
-- 发布提交 / Release commit: `01731f693`
+- 发布提交 / Release commit: `dd9e8e395`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix installer static asset permissions / 修复安装器静态资源权限
 
@@ -1669,7 +1684,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.1.9
 
-- 发布提交 / Release commit: `8f2d2f39b`
+- 发布提交 / Release commit: `9649f3c9b`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Ensure installer enables pnpm / 确保安装脚本启用 pnpm
 
@@ -1687,7 +1702,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.1.8
 
-- 发布提交 / Release commit: `65dbc9d8a`
+- 发布提交 / Release commit: `4bcbb439d`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix delivery nav icon / 修复交付保障导航图标
 
@@ -1705,7 +1720,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.1.7
 
-- 发布提交 / Release commit: `1e7a7388b`
+- 发布提交 / Release commit: `ba7a6eed2`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add delivery assurance center / 新增交付保障中心
 
@@ -1729,47 +1744,47 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.1.6
 
-- 发布提交 / Release commit: `474ae022e`
+- 发布提交 / Release commit: `3bfdfe5ac`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix admin instance detail loading / 修复后台实例详情加载
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix admin instance detail loading / 修复后台实例详情加载 `474ae022e`
+- Fix admin instance detail loading / 修复后台实例详情加载 `3bfdfe5ac`
 
 ## v0.1.5
 
-- 发布提交 / Release commit: `e865f4d41`
+- 发布提交 / Release commit: `33d1afc9f`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Localize operation logs in Chinese / 日志内容中文化
 
 ### 其他变更 / Other Changes
 
-- Localize operation logs in Chinese / 日志内容中文化 `e865f4d41`
+- Localize operation logs in Chinese / 日志内容中文化 `33d1afc9f`
 
 ## v0.1.4
 
-- 发布提交 / Release commit: `ac2b679e4`
+- 发布提交 / Release commit: `653d3a51b`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Prevent incompatible VM package host binding / 阻止不兼容 VM 套餐节点绑定
 
 ### 其他变更 / Other Changes
 
-- Prevent incompatible VM package host binding / 阻止不兼容 VM 套餐节点绑定 `ac2b679e4`
+- Prevent incompatible VM package host binding / 阻止不兼容 VM 套餐节点绑定 `653d3a51b`
 
 ## v0.1.3
 
-- 发布提交 / Release commit: `5bec34f74`
+- 发布提交 / Release commit: `b9857686a`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix instance detail bandwidth rendering / 修复实例详情带宽渲染
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix instance detail bandwidth rendering / 修复实例详情带宽渲染 `5bec34f74`
+- Fix instance detail bandwidth rendering / 修复实例详情带宽渲染 `b9857686a`
 
 ## v0.1.2
 
-- 发布提交 / Release commit: `004c84f3c`
+- 发布提交 / Release commit: `104c6c0c5`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix admin update and plugin UI / 修复更新与插件 UI
 
@@ -1791,7 +1806,7 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.1.1
 
-- 发布提交 / Release commit: `f2aaefa45`
+- 发布提交 / Release commit: `4fb35c487`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Polish update task and extension center UI / 优化更新任务和扩展中心界面
 
@@ -1819,115 +1834,115 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.1.0
 
-- 发布提交 / Release commit: `6c06bd873`
+- 发布提交 / Release commit: `e4f9f8a17`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Polish update and plugin admin UI / 优化更新与插件后台界面
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Polish update and plugin admin UI / 优化更新与插件后台界面 `6c06bd873`
+- Polish update and plugin admin UI / 优化更新与插件后台界面 `e4f9f8a17`
 
 ### 其他变更 / Other Changes
 
-- Document bilingual versioning and OTA cadence rules `7fe36012d`
+- Document bilingual versioning and OTA cadence rules `81fce60d0`
 
 ## v0.0.22
 
-- 发布提交 / Release commit: `9f638d87f`
+- 发布提交 / Release commit: `bec9bdba7`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Add redacted production proof snapshot
 
 ### 新增能力 / New Capabilities
 
-- Add redacted production proof snapshot `9f638d87f`
+- Add redacted production proof snapshot `bec9bdba7`
 
 ### 其他变更 / Other Changes
 
-- Record public production revalidation `f9ed41edf`
+- Record public production revalidation `d63dd461e`
 
 ## v0.0.21
 
-- 发布提交 / Release commit: `71cdcff11`
+- 发布提交 / Release commit: `6a4ebdb1b`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix production OTA CLI start command
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix production OTA CLI start command `71cdcff11`
+- Fix production OTA CLI start command `6a4ebdb1b`
 
 ## v0.0.20
 
-- 发布提交 / Release commit: `301fc2c9a`
+- 发布提交 / Release commit: `6b99a47f2`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Update version log for static root fix
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix production split static roots `5afc9a57e`
+- Fix production split static roots `9cb0ae0c2`
 
 ## v0.0.19
 
-- 发布提交 / Release commit: `97f87c5a9`
+- 发布提交 / Release commit: `d8195460b`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix storage pool defaults and error guidance
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix storage pool defaults and error guidance `97f87c5a9`
+- Fix storage pool defaults and error guidance `d8195460b`
 
 ## v0.0.18
 
-- 发布提交 / Release commit: `368d1953a`
+- 发布提交 / Release commit: `43b9807ed`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix Agent binary installer cache query
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix Agent binary installer cache query `368d1953a`
+- Fix Agent binary installer cache query `43b9807ed`
 
 ## v0.0.17
 
-- 发布提交 / Release commit: `60faf9a59`
+- 发布提交 / Release commit: `71bb4ca70`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Fix Agent installer manifest parsing
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix Agent installer manifest parsing `60faf9a59`
+- Fix Agent installer manifest parsing `71bb4ca70`
 
 ## v0.0.16
 
-- 发布提交 / Release commit: `a0a35fb51`
+- 发布提交 / Release commit: `0a75877a6`
 - 提交日期 / Commit date: 2026-06-24
 - 提交说明 / Commit subject: Refresh host panel trust certificate
 
 ### 其他变更 / Other Changes
 
-- Refresh host panel trust certificate `a0a35fb51`
+- Refresh host panel trust certificate `0a75877a6`
 
 ## v0.0.15
 
-- 发布提交 / Release commit: `a361779aa`
+- 发布提交 / Release commit: `71e2af87c`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Fix atomic OTA install root detection
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix atomic OTA install root detection `a361779aa`
+- Fix atomic OTA install root detection `71e2af87c`
 
 ## v0.0.14
 
-- 发布提交 / Release commit: `6a0624abb`
+- 发布提交 / Release commit: `3833c6f79`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Clarify Debian host install support
 
 ### 新增能力 / New Capabilities
 
-- Clarify Debian host install support `6a0624abb`
+- Clarify Debian host install support `3833c6f79`
 
 ## v0.0.13
 
-- 发布提交 / Release commit: `5bf4e9aa3`
+- 发布提交 / Release commit: `f9f6cdb7c`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Update version log for HSTS hardening
 
@@ -1939,31 +1954,31 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.0.12
 
-- 发布提交 / Release commit: `0453d5aac`
+- 发布提交 / Release commit: `e44a5d7ce`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Add extension center
 
 ### 新增能力 / New Capabilities
 
-- Add extension center `0453d5aac`
-- Add bilingual PayIncus documentation site `8d89da363`
+- Add extension center `e44a5d7ce`
+- Add bilingual PayIncus documentation site `0c8682741`
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix GitHub Pages docs workflow `9b9b40f55`
+- Fix GitHub Pages docs workflow `5e0a9a0fa`
 
 ### 其他变更 / Other Changes
 
-- Deploy docs site with GitHub Pages `9d6cd2b46`
+- Deploy docs site with GitHub Pages `e041db36e`
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Update split deployment docs `878fc93d7`
-- Update README with OTA and community links `86c623441`
+- Update split deployment docs `54368bf10`
+- Update README with OTA and community links `ae5617118`
 
 ## v0.0.11
 
-- 发布提交 / Release commit: `6229369bc`
+- 发布提交 / Release commit: `eae342d77`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Support atomic OTA release layout
 
@@ -1971,27 +1986,27 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.0.10
 
-- 发布提交 / Release commit: `6229369bc`
+- 发布提交 / Release commit: `eae342d77`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Support atomic OTA release layout
 
 ### 新增能力 / New Capabilities
 
-- Support atomic OTA release layout `6229369bc`
+- Support atomic OTA release layout `eae342d77`
 
 ## v0.0.9
 
-- 发布提交 / Release commit: `292408042`
+- 发布提交 / Release commit: `2af166460`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Auto rollback failed online updates
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Auto rollback failed online updates `292408042`
+- Auto rollback failed online updates `2af166460`
 
 ## v0.0.8
 
-- 发布提交 / Release commit: `b60103085`
+- 发布提交 / Release commit: `39140db7a`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Prefer verified OTA artifacts for online updates
 
@@ -1999,91 +2014,91 @@ Preserve Lsky pathname/path fallback provider IDs so uploaded ticket images can 
 
 ## v0.0.7
 
-- 发布提交 / Release commit: `b60103085`
+- 发布提交 / Release commit: `39140db7a`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Prefer verified OTA artifacts for online updates
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Prefer verified OTA artifacts for online updates `b60103085`
+- Prefer verified OTA artifacts for online updates `39140db7a`
 
 ## v0.0.6
 
-- 发布提交 / Release commit: `e691ffa8e`
+- 发布提交 / Release commit: `c6342d950`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Stabilize OTA restart verification
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Stabilize OTA restart verification `e691ffa8e`
+- Stabilize OTA restart verification `c6342d950`
 
 ## v0.0.5
 
-- 发布提交 / Release commit: `674c0d8e5`
+- 发布提交 / Release commit: `8c633c68f`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Fix OTA manifest release workflow checkout
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Fix OTA manifest release workflow checkout `674c0d8e5`
+- Fix OTA manifest release workflow checkout `8c633c68f`
 
 ## v0.0.4
 
-- 发布提交 / Release commit: `21c398f7e`
+- 发布提交 / Release commit: `55fdd4abd`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Add OTA release manifest metadata
 
 ### 新增能力 / New Capabilities
 
-- Add OTA release manifest metadata `21c398f7e`
+- Add OTA release manifest metadata `55fdd4abd`
 
 ## v0.0.3
 
-- 发布提交 / Release commit: `edac4e9e1`
+- 发布提交 / Release commit: `9ad38dde4`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Make OTA worker tolerate production git ownership
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Make OTA worker tolerate production git ownership `edac4e9e1`
+- Make OTA worker tolerate production git ownership `9ad38dde4`
 
 ## v0.0.2
 
-- 发布提交 / Release commit: `19391c900`
+- 发布提交 / Release commit: `cb1f45b96`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Make online updates asynchronous and build-ready
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Make online updates asynchronous and build-ready `19391c900`
+- Make online updates asynchronous and build-ready `cb1f45b96`
 
 ## v0.0.1
 
-- 发布提交 / Release commit: `c7629e641`
+- 发布提交 / Release commit: `dcd968d20`
 - 提交日期 / Commit date: 2026-06-23
 - 提交说明 / Commit subject: Allow online update worker sudo under systemd
 
 ### 新增能力 / New Capabilities
 
-- Allow online update worker sudo under systemd `c7629e641`
+- Allow online update worker sudo under systemd `dcd968d20`
 
 ### 改进与调整 / Improvements and Adjustments
 
-- Prepare v0.0.1 online update baseline `6a9854c5c`
-- Make release installs reproducible `fb02c8c53`
-- Update Agent release repository default `108efe281`
-- Rewrite PayIncus README `063fbaf10`
-- Update payincus deployment checks `354007222`
-- Update README.md `fb9297153`
-- Prepare host deployment package `52e1af49d`
+- Prepare v0.0.1 online update baseline `c7b223d93`
+- Make release installs reproducible `deea26349`
+- Update Agent release repository default `51bf5ff43`
+- Rewrite PayIncus README `c1f237e0e`
+- Update payincus deployment checks `7979d9dda`
+- Update README.md `f971ad5f0`
+- Prepare host deployment package `09d96b11b`
 
 ### 修复与稳定性 / Fixes and Stability
 
-- Harden release production verification `8b23a8f18`
+- Harden release production verification `c31d5ba79`
 
 ### 其他变更 / Other Changes
 
-- first commit `c2498911a`
+- first commit `cb4a866db`
 
 ## 生成方式
 

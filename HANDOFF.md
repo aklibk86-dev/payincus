@@ -1,6 +1,6 @@
 # PayIncus Handoff
 
-Last updated: 2026-07-01 14:24 CST
+Last updated: 2026-07-08 03:45 CST
 
 This file is a handoff note for a new Codex conversation. Do not include server passwords or other secrets in this file.
 
@@ -12,66 +12,70 @@ Give the next Codex session this file first. The active working directory is:
 /Users/max/.codex/worktrees/payincus-release-v124
 ```
 
-Production is currently on `v1.2.11`. The latest shipped work fixed the public help-center empty-state fallback and OAuth authorize error messaging in `v1.2.10`, then immediately shipped `v1.2.11` to sync the Service Worker cache name with the new release version so old static chunks are cleaned after OTA. Earlier in the same release chain, `v1.2.9` fixed the auth UI Turnstile token path and versioned `/sw.js` registration.
+Production is currently on `v1.2.12`. The latest shipped work released the current UI/stability fix set, including instance change-plan price-unit correction, safe plugin/theme market fallback, registration/forgot-password/wallet/resource/admin layout and route fixes, and the Service Worker cache name bump to `incudal-cache-v1.2.12`.
 
-The broader Product Design / Uiverse-inspired kawaii IDC UI work remains local design work unless called out in a tagged release section below. Do not assume all remaining dirty/untracked UI assets are production-ready.
+The release commit/tag and OTA evidence below are production proof for `v1.2.12`. Remaining untracked `.ui-scan/` output is local-only evidence and should not be treated as tracked release content.
 
-### Current v1.2.11 Production / OTA Status
+### Current v1.2.12 Production / OTA Status
 
-- `v1.2.10` release commit: `19a4623aa` (`Release v1.2.10 help and OAuth fallback fixes`), tag pushed, GitHub Release generated, and production OTA task `#133` succeeded. This was immediately superseded by `v1.2.11` because post-OTA proof found `/sw.js?v=1.2.10` still used `incudal-cache-v1.2.9`.
-- `v1.2.11` release commit: `44054e29e` (`Release v1.2.11 service worker cache version`).
-- `payincus/main` and tag `v1.2.11` were pushed successfully.
-- GitHub Release `v1.2.11` exists with amd64/arm64 tarballs, SHA256 files, `incudal-v1.2.11-ota-manifest.json`, `ota-manifest.json`, plugin assets, and `plugin-market-index.json`.
+- `v1.2.12` release commit: `df34eacf9` (`Release v1.2.12 UI and stability fixes`).
+- `payincus/main` and tag `v1.2.12` were pushed successfully.
+- GitHub Actions release run `28892061593` (`Build & Release`) completed successfully:
+  - `构建 (arm64) -> success`
+  - `构建 (amd64) -> success`
+  - `发布 Release -> success`
+- GitHub Release `v1.2.12` exists with amd64/arm64 tarballs, SHA256 files, `incudal-v1.2.12-ota-manifest.json`, `ota-manifest.json`, plugin assets, and `plugin-market-index.json`.
 - OTA manifest proof:
-  - version/tag `v1.2.11`
-  - gitCommit `44054e29e532`
-  - amd64 sha256 `8c27b9385537ed4a2e2ca0c12ccb76293c696c0492f8791facdcf78f43c03878`
-  - arm64 sha256 `661b578220b5d4c8e7289ea11866ad3dbedfc332b9baf47a0409d652982ec5ab`
-- Production current symlink: `/opt/incudal/current -> /opt/incudal/releases/v1.2.11-20260701062140`.
+  - version/tag `v1.2.12`
+  - gitCommit `df34eacf9b81`
+  - amd64 sha256 `a5c85686f7274347a42c796dca914a88d40d1aa9170c8e6185de0b919b00815b`
+  - arm64 sha256 `ce575cb702b3edb1b484bd452c92d2eb88ee6de502bfaa602d328a8590518dfb`
+- First OTA attempt `#135` failed during `verify:log-header` because the manual launch command incorrectly overrode `BACKEND_URL=https://pay.payincus.com`; the updater auto-rolled back to `v1.2.11` and rollback split-host verification passed.
+- Final OTA task `#136`: `v1.2.11 -> v1.2.12`, status `success`, log `/opt/incudal/update-logs/system-update-136.log`, completed in the log at `2026-07-07T19:44:25.328Z`.
+- Production current symlink: `/opt/incudal/current -> /opt/incudal/releases/v1.2.12-20260707194253`.
 - Production `/opt/incudal/current/version.json`:
-  - version `v1.2.11`
-  - gitTag `v1.2.11`
-  - gitCommit `44054e29e532`
-  - buildTime `2026-07-01T06:20:04.171Z`
-  - deployedAt `2026-07-01T06:22:05.600Z`
-  - changelog `Release v1.2.11 service worker cache version`
-- OTA task `#134`: `v1.2.10 -> v1.2.11`, status `success`, log `/opt/incudal/update-logs/system-update-134.log`, completed in the log at `2026-07-01T06:23:01.445Z`.
-- OTA log proof included artifact SHA256 verification, switch to `/opt/incudal/releases/v1.2.11-20260701062140`, production readiness verification, `verify:log-header`, and `System update completed successfully`.
+  - version `v1.2.12`
+  - gitTag `v1.2.12`
+  - gitCommit `df34eacf9b81`
+  - buildTime `2026-07-07T19:17:24.071Z`
+  - deployedAt `2026-07-07T19:43:14.293Z`
+  - changelog `Release v1.2.12 UI and stability fixes`
+- OTA log proof included artifact SHA256 verification, switch to `/opt/incudal/releases/v1.2.12-20260707194253`, `verify-split-host`, `verify:production`, `verify:log-header`, and `System update completed successfully`.
 - Production backend service check: `systemctl is-active incudal-backend -> active`.
 - Production health checks:
   - `https://pay.payincus.com/api/health -> {"status":"ok",...}`
   - `https://admin.payincus.com/api/health -> {"status":"ok",...}`
-- Service worker proof: `https://pay.payincus.com/sw.js?v=1.2.11` contains `const CACHE_NAME = 'incudal-cache-v1.2.11'` and the network-first static resource strategy.
-- Public help proof:
-  - `https://pay.payincus.com/api/help?page=1&pageSize=3 -> total 1, slug getting-started`, with both snake_case and camelCase date fields.
-  - `https://pay.payincus.com/api/help/article/__missing_v1211_probe__ -> 404 {"code":"ARTICLE_NOT_FOUND"}`.
+- Service worker proof: `https://pay.payincus.com/sw.js?v=1.2.12` contains `const CACHE_NAME = 'incudal-cache-v1.2.12'`.
 - Post-OTA split-host verification passed:
-  - `FRONTEND_URL=https://pay.payincus.com ADMIN_FRONTEND_URL=https://admin.payincus.com BACKEND_URL=https://pay.payincus.com VERIFY_RETRIES=2 VERIFY_RETRY_DELAY=1 pnpm verify:split:host`
+  - OTA task `#136` ran `bash scripts/verify-split-host.sh` with backend direct API `http://127.0.0.1:3001`.
+  - `pnpm verify:production -> passed` with existing warnings for stale DE-01 Agent heartbeat and sold-out/insufficient public packages.
+  - `pnpm verify:log-header -> passed`; it confirmed the backend root did not serve frontend HTML and current secret values were not present in scanned logs.
 
-### Completed v1.2.11 Local / Release Verification
+### Completed v1.2.12 Local / Release Verification
 
 ```text
-pnpm --filter server exec tsx scripts/test-content-route-guards.ts -> passed
-pnpm --filter server exec tsx scripts/test-frontend-route-guards.ts -> passed
-pnpm --filter client build:user -> passed
-pnpm --filter client build:admin -> passed
-pnpm --filter server type-check -> passed
 pnpm test -> passed
 pnpm build -> passed
 pnpm --dir docs-site --ignore-workspace build -> passed
+pnpm --dir docs-site --ignore-workspace changelog -> passed after tag
 git diff --check -> passed
+git diff --cached --check -> passed before release commit
 ```
 
-Latest targeted local screenshot/CDP scan outputs are local-only and intentionally untracked:
+Latest local screenshot/CDP and API scan outputs are local-only and intentionally untracked:
 
 ```text
-.ui-scan/2026-07-01T04-20-00-v129-auth-public-scan/
-.ui-scan/2026-07-01T-help-not-found-fix-local/
-.ui-scan/2026-07-01T-help-default-article-local/
-.ui-scan/2026-07-01T-oauth-error-fix-local/
+.ui-scan/2026-07-08T-segment-public-customer-owner-rerun/
+.ui-scan/2026-07-08T-segment-admin-core-ops-rerun/
+.ui-scan/2026-07-08T-target-public-home-mobile/
+.ui-scan/2026-07-08T-target-admin-settings-mobile/
+.ui-scan/2026-07-08T-target-admin-plugins-limits-mobile/
+.ui-scan/2026-07-08T-target-admin-instance-detail-mobile/
+.ui-scan/2026-07-08T-target-layout-desktop-regression/
+.ui-scan/2026-07-08T-api-read-classified-preconditions/
 ```
 
-The v1.2.9 scan covered desktop and mobile `home`, `login`, `register`, `forgot-password`, and `admin-login`. The later targeted scans covered the help 404 copy, built-in getting-started help fallback, and OAuth unavailable-app error state. Production API and split-host checks above are the authoritative backend/OTA evidence.
+The latest local UI scan reruns reported 108/108 public/customer/resource-owner pages with 0 issues, 92/92 admin/core-ops pages with 0 issues, and the targeted mobile/desktop reruns with 0 issues. The API read classified scan executed 345 routes, skipped 10 precondition-only routes, and reported no true 4xx/5xx/sensitive/sample-param findings. Production checks above are the authoritative backend/OTA evidence.
 
 ### First Commands For The Next Session
 
@@ -100,7 +104,7 @@ pnpm --filter server exec tsx scripts/test-content-route-guards.ts -> passed
 pnpm --filter client build:user -> passed
 pnpm build -> passed
 git diff --check -> passed
-pnpm verify:split:host against production -> passed after OTA
+pnpm verify:split:host / verify:production / verify:log-header -> passed inside OTA task #136
 ```
 
 ### Important Constraints
